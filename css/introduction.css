@@ -1,0 +1,139 @@
+.main .lb .preface{
+    float: top;
+    height: 50%;
+    width: 100%;
+
+    border-bottom: 0.5vh solid black;
+}
+
+.main .lb .preface h1
+{
+    margin-left: 7vh;
+    padding-top: 3vh;
+
+    font-size: 5.5vh;
+}
+
+.main .lb .preface .literary
+{
+    margin-left: 5vh;
+    margin-top: 1vh;
+    margin-right: 5vh;
+
+    line-height: 5vh;
+    font-size: 2.5vh;
+}
+
+.main .lb .field{
+    float: top;
+    height: 47%;
+    width: 100%;
+
+    /* background-color: yellow; */
+}
+
+.main .lb .field h1
+{
+    margin-left: 7vh;
+    /* padding-top: 3vh; */
+
+    font-size: 5.5vh;
+}
+
+.main .lb .field h3
+{
+    margin-left: 3vh;
+    /* padding-top: 3vh; */
+
+    font-size: 3vh;
+}
+
+.main .lb .field .literature
+{
+    margin-left: 1vh;
+    padding-top: 1vh;
+
+    font-size: 2.0vh;
+    line-height: 3vh;
+}
+
+.main .lb .field .project
+{
+    float: left;
+    /* background-color: bisque; */
+    border-right: 0.1vh solid gray;
+    width: 49.5%;
+    height: 80%;
+}
+
+.main .lb .field .research
+{
+    float: left;
+    /* background-color: brown; */
+    width: 50%;
+    height: 80%;
+}
+
+.main .rb h1
+{
+    margin-left: 7vh;
+    padding-top: 3vh;
+
+    font-size: 5.5vh;
+}
+
+.main .rb .undergo
+{
+    height: 80%;
+    width: 25vw;
+
+    margin-top: 5vh;
+    margin-left: 5vw;
+
+    /* background-color: blue; */
+    border-left: 0.4vh solid black;
+}
+
+.main .rb .undergo ul
+{
+    height: 100%;
+    width: 100%;
+}
+
+.main .rb .undergo ul li
+{
+    height: 5vh;
+    width: 100%;
+    /* background-color: brown; */
+    margin-top: 4vh;
+    margin-left: -2.6vh;
+
+    list-style:none;
+}
+
+.main .rb .undergo ul li .circle
+{
+    float: left;
+    width: 5vh;
+    height: 5vh;
+    background-color: orange;
+    border-radius: 50%;
+}
+
+.main .rb .undergo ul li:hover > .circle
+{
+    width:5.3vh;
+    height:5.3vh;
+}
+
+.main .rb .undergo ul li .literature
+{
+    float: left;
+    padding-left: 1vh;
+    margin-left: 1vh;
+    height: 5vh;
+    width: 85%;
+    font-size: 2vh;
+    line-height: 5vh;
+    /* background-color: aqua; */
+}

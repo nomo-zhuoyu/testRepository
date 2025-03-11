@@ -1,0 +1,234 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: url("../image/indexBackground.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.index_List{
+    height: 90vh;
+    width: 50vw;
+    margin: 0 auto;
+    /* background-color: red; */
+}
+
+/* 头像相关 */
+.index_List .myPhBa {
+    width: 20vh;
+    height: 20vh;
+
+    background: url("../image/head.png");
+    background-size: 100% 100%;
+
+    margin: 10vh auto 0;
+    border: 0.15vh solid black;
+    /*border-radius: 50px;*/
+    border-radius: 50%;
+}
+
+.index_List .myPhBa .myPh{
+    width: 20vh;
+    height: 20vh;
+    background:rgba(255, 168, 0, 1);
+
+    border-radius: 50%;
+    
+    line-height: 0;
+    font-size: 0;
+
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.index_List .myPhBa .myPh:hover{
+    width: 20vh;
+    height: 20vh;
+    
+    background: rgba(255, 168, 0, 1);
+    border-radius: 50%;
+    text-align: center;
+    font-size: 2.5vh;
+    color:aliceblue;
+
+    opacity: 1;
+    line-height:20vh;
+}
+
+/* 首页标题 */
+.index_List .title{
+    width: 53vh;
+    height: 20vh;
+    /* background-color: blue; */
+    border-bottom:  0.15vh solid white;
+    margin:auto ;
+    /* pointer-events: none; */
+    user-select:none;   /*设置文字不可被选中*/
+}
+
+.index_List .title h1{
+    color: white;
+    text-align: center;
+    font-size: 5vh;
+    font-weight: 800px;
+    text-shadow: 0 0 4vh #32003C ;
+    pointer-events: none;
+
+}
+
+.index_List .title h2{
+    color: white;
+    padding-top: 3.5vh;
+    text-align: center;
+    font-size: 3.1vh;
+    font-weight: 400px;
+    text-shadow: 0 0 4vh #32003C ;
+    font-family: monospace;
+}
+
+
+/* 喜欢的格言 */
+.index_List .motto{
+    width: 50vh;
+    height: 20vh;
+    /* background-color: peru; */
+    margin: auto ;
+
+    user-select:none;  
+}
+
+.index_List .motto h1{
+    color: white;
+    padding-top: 3vh;
+    font-size: 2vh;
+    font-weight: normal;
+    text-shadow: 0 0 2vh #32003C ;
+}
+
+.index_List .motto h2{
+    color: white;
+    padding-top: 1vh;
+    font-size: 2vh;
+    text-align: right;
+    text-shadow: 0 0 2vh #32003C ;
+}
+
+
+/* 导航 */
+.index_List .navigation{
+    width: 53vh;
+    height: 10vh;
+    /* background-color: white; */
+    margin: auto ;
+}
+
+.index_List .navigation .choose{
+    margin: 2.5vh 2vh 2.5vh 2.9vh;
+    float: left;
+    width: 12vh;
+    height: 5vh;
+    /* background: red; */
+    border: rgba(180 , 170 , 180 , 1) solid 0.08vh;
+    text-align: center;
+    line-height: 5vh;
+    font-size: 3vh;
+    color: rgba(180 , 170 , 180 , 1);
+    border-radius: 3vh;
+
+}
+
+.index_List .navigation .choose:hover{
+    margin: 2.5vh 2vh 2.5vh 2.9vh;
+    float: left;
+    width: 12vh;
+    height: 5vh;
+    /* background: red; */
+    border: white solid 0.08vh;
+    text-align: center;
+    line-height: 5vh;
+    font-size: 3vh;
+    color: white;
+    border-radius: 3vh;
+}
+
+/* 其他相关主页链接 */
+.index_List .links{
+    width: 30vh;
+    height: 10vh;
+    /* background-color: purple; */
+    margin: auto ; 
+}
+
+/* 我的csdn */
+.index_List .links .csdn
+{
+    margin-top: 5vh;
+    margin-left: 4.5vh;
+    width: 3.3vh;
+    height: 3.3vh;
+    float: left;
+    background: url("../image/logo_csdn.png");
+    background-size: 100% 100%;
+    opacity: 0.5;
+}
+
+.index_List .links .csdn:hover
+{
+    margin-top: 5vh;
+    margin-left: 4.5vh;
+    width: 3.3vh;
+    height: 3.3vh;
+    float: left;
+    background: url("../image/logo_csdn.png");
+    background-size: 100% 100%;
+    opacity: 1;
+}
+
+/* 我的gitee仓库 */
+.index_List .links .gitee{
+    margin-top: 5vh;
+    margin-left: 4.5vh;
+    width: 3.5vh;
+    height: 3.5vh;
+    float: left;
+    background: url("../image/logo_gitee.png") ;
+    background-size: 100% 100%;
+    opacity: 0.5;
+}
+
+.index_List .links .gitee:hover{
+    margin-top: 5vh;
+    margin-left: 4.5vh;
+    width: 3.5vh;
+    height: 3.5vh;
+    float: left;
+    background: url("../image/logo_gitee.png") ;
+    background-size: 100% 100%;
+    opacity: 1;
+}
+
+/* 向我发送邮件 */
+.index_List .links .mail{
+    margin-top: 5vh;
+    margin-left: 4.5vh;
+    width: 3.5vh;
+    height: 3.5vh;
+    float: left;
+    background: url("../image/logo_mail.png");
+    background-size: 100% 100%;
+    opacity: 0.5;
+}
+
+.index_List .links .mail:hover{
+    margin-top: 5vh;
+    margin-left: 4.5vh;
+    width: 3.5vh;
+    height: 3.5vh;
+    float: left;
+    background: url("../image/logo_mail.png");
+    background-size: 100% 100%;
+    opacity: 1;
+}
+

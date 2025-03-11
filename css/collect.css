@@ -1,0 +1,139 @@
+.lb .albumName
+{
+    width: 100%;
+    height: 5vh;
+    float: top;
+}
+
+.lb .albumName h2{
+    padding-left: 3vh;
+    font-size: 4vh;
+}
+
+.lb .album{
+    float: bottom;
+    width: 100%;
+    height: 80vh;
+    /* background: gray; */
+    margin:0 auto 0;
+}
+
+.lb .album li{
+    list-style: none;
+}
+
+.lb .album .showImg{
+    width: 100%;
+    height: 70vh;
+    float: top;
+    overflow: hidden;
+}
+
+.lb .album .showImg .imgBox
+{
+    width: 100%;
+    height: 70vh;
+    align-items: center;
+    display:flex;
+}
+
+.lb .album .showImg img{
+    margin: auto;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lb .album .navi{
+    width: 100%;
+    height: 15vh;
+    float: bottom;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    background-color: gray;
+
+}
+
+.lb .album .navi .imgBox
+{
+    width: 10vh;
+    height: 10vh;
+    float: left;
+    border: 0.1vh solid white;
+    display: flex;
+    align-items: center;
+    background-color: black;
+}
+
+.lb .album .navi img{
+    width: 10vh;
+    display: block;
+}
+
+.rb .title 
+{
+    width: 100%;
+    height: 5vh;
+    float: top;
+}
+
+.rb .title h2
+{
+    padding-left: 3vh;
+    font-size: 4vh
+}
+
+.rb .extract
+{
+    width: 100%;
+    height: 90%;
+    background-color: rgba(100, 100, 100,0.4);
+    margin-top: 1vh;
+    border-top: 0.1vh solid gray;
+    border-bottom: 0.1vh solid gray;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.rb .extract ul 
+{
+    height: 90%;
+    margin-top: 3vh;
+    margin-left: 3vh;
+}
+
+.rb .extract ul li{
+    height: auto;
+    width: 100%;
+    margin-top: 4vh;
+    display:block;
+}
+
+.rb .extract ul li .sentence
+{
+    float: top;
+    height: auto;
+    width: 100%;
+    /* background-color: bisque; */
+    text-align: left;
+    font-size: 2.5vh;
+    line-height: 3vh;
+}
+
+.rb .extract ul li .author
+{
+    margin-top: 0.5vh;
+    margin-bottom: 2.5vh;
+    margin-right: 0.;
+    height: top;
+    width: 100%;
+    float: right;
+    /* background-color: aquamarine; */
+    text-align: right;
+    font-size: 2.5vh;
+    line-height: 3vh;
+
+}

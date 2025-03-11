@@ -1,0 +1,114 @@
+body{
+    background: url("../image/indexBackground.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.main{
+    height: 90vh;
+    width: 100vw;
+
+    background-color: rgba(255,  255, 255, 0.8);
+}
+
+.main .lb{
+    float: left;
+    height: 100%;
+    width: 35vw;
+
+}
+
+.main .mb{
+    float: left;
+    height: 100%;
+    width: 30vw;
+    background-color: rgba(255,  255, 255, 0.75);
+}
+
+.main .mb .myPhBa {
+    float: top;
+    width: 20vh;
+    height: 20vh;
+
+    background: url("../image/head.png");
+    background-size: 100% 100%;
+
+    margin: 0 auto 0;
+    border: 0.15vh solid black;
+    border-radius: 50%;
+}
+
+.main .mb .name
+{
+    float: top;
+    width: 80%;
+    height: 17vh;
+    border-bottom:  0.15vh solid gray;
+    margin:auto ;
+    user-select:none;   /*设置文字不可被选中*/
+}
+
+
+.main .mb .name h1{
+    width: 100%;
+    height: 8vh;
+    color: black;
+    text-align: center;
+    font-size: 5vh;
+    text-shadow: 0 0 4vh #32003C ;
+    pointer-events: none;
+    /* background-color: red; */
+}
+
+.main .mb .purpose
+{
+    float: top;
+    width: 100%;
+    height: 50%;
+    margin-top: 5vh;
+
+    /* background-color: yellowgreen; */
+}
+
+.main .mb .purpose h3{
+    margin-top: 5vh;
+    width: 100%;
+    height: 4vh;
+    text-align: center;
+
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+.main .mb .purpose h4{
+    margin-top: 4vh;
+    width: 100%;
+    text-align: center;
+    height: 3vh;
+    font-size: 2.5vh;
+    font-weight: normal;
+}
+
+.main .mb .purpose h5{
+
+    margin-top: 3vh;
+    width: 100%;
+    text-align: center;
+    height: 3vh;
+    font-size: 2vh;
+    font-weight: normal;
+    color: gray;
+}
+
+.main .mb .purpose a{
+    font-size: 2vh;
+    font-weight: normal;
+    color: gray;
+    text-decoration: none;
+}
+
+.main .rb{
+    float: left;
+    height: 100%;
+    width: 35vw;
+    /* background-color: red; */
+}

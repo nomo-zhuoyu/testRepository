@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navigation{
+    width: 100vw;
+    height: 10vh;
+    background-color: rgba(255 , 255, 255 ,1);
+    margin-top: -6vh;
+}
+
+.navigation ul{
+    width: 80vw;
+    height: 6.6vh;
+    border-bottom: 0.01vh solid black;
+    margin: 6vh auto 0;
+    padding-left: 6.6vh;
+    padding-top: 2vh;
+}
+
+.navigation ul .waitVisit_l{
+    float: left;
+    list-style: none;
+    margin-top: 0.6vh;
+    padding: 0 2.4vh;
+
+    height: 5.8vh;
+    width: 8vh;
+
+    border: 0.01vh solid gray;
+    border-radius: 2vh 0 0 0;
+    border-bottom: none;
+    margin-right: 1.6vh;
+    background:white;
+}
+
+.navigation ul .waitVisit_r{
+    float: right;
+    list-style: none;
+    margin-top: 0.6vh;
+    padding: 0 2.4vh;
+
+    height: 5.8vh;
+    width: 8vh;
+
+    border: 0.01vh solid gray;
+    border-radius: 2vh 0 0 0;
+    border-bottom: none;
+    margin-right: 1.6vh;
+    background:white;
+}
+
+.navigation ul .waitVisit_l:hover{
+    height: 7vh;
+    margin-top: 0;
+    background: white;
+    border-color: black;
+}
+
+.navigation ul .waitVisit_r:hover{
+    height: 7vh;
+    margin-top: 0;
+    background: white;
+    border-color: black;
+}
+
+.navigation ul .nowVisit{
+    float: left;
+    list-style: none;
+    margin-top: 0;
+    padding: 0 2.4vh;
+
+    height: 7vh;
+    width: 8vh;
+
+    border: 0.01vh solid black;
+    border-radius: 2vh 0 0 0;
+    border-bottom: none;
+    margin-right: 1.6vh;
+    background:white;
+
+}
+
+.navigation ul .waitVisit_l:hover ~.nowVisit{
+    height: 5.8vh;
+    margin-top: 0.6vh;
+    background: white;
+    border-color: gray;
+}
+.navigation ul .waitVisit_r:hover ~.nowVisit{
+    height: 5.8vh;
+    margin-top: 0.6vh;
+    background: white;
+    border-color: gray;
+}
+
+.navigation ul li a{
+    display: block;
+
+    text-align: center;
+    line-height: 5.8vh;
+    text-decoration: none;
+
+    color: gray;
+    font-size:  3vh;
+    user-select:none; 
+}
