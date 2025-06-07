@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实时时钟 | 精确显示当前系统时间</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#60A5FA',
+                        accent: '#2563EB',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自定义工具类 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .clock-shadow {
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 
+                            0 5px 15px rgba(0, 0, 0, 0.07),
+                            inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            }
+            .hand-transition {
+                transition: transform 0.5s cubic-bezier(0.1, 2.7, 0.58, 1);
+            }
+        }
+    </style>
+    
+    <!-- 导入字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-slate-900 to-slate-800 min-h-screen font-inter text-light flex flex-col items-center justify-center p-4 md:p-8 overflow-x-hidden">
+    <!-- 页面标题 -->
+    <header class="text-center mb-8">
+        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500 mb-2">实时时钟</h1>
+        <p class="text-slate-400 text-lg md:text-xl">精确显示当前系统时间</p>
+    </header>
+    
+    <!-- 主要内容区 -->
+    <main class="w-full max-w-5xl flex flex-col items-center gap-8">
+        <!-- 模拟时钟 -->
+        <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-slate-800 to-slate-700 rounded-full border-8 border-slate-700 clock-shadow flex items-center justify-center mb-8">
+            <!-- 时钟刻度 -->
+            <div class="absolute inset-0">
+                <!-- 小时刻度 -->
+                <div class="absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-4 bg-primary"></div>
+                <div class="absolute top-1/2 right-2 transform -translate-y-1/2 w-4 h-1 bg-primary"></div>
+                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-4 bg-primary"></div>
+                <div class="absolute top-1/2 left-2 transform -translate-y-1/2 w-4 h-1 bg-primary"></div>
+                
+                <!-- 分钟刻度 -->
+                <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-slate-400"></div>
+                <div class="absolute top-1/2 right-4 transform -translate-y-1/2 w-2 h-1 bg-slate-400"></div>
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-1 h-2 bg-slate-400"></div>
+                <div class="absolute top-1/2 left-4 transform -translate-y-1/2 w-2 h-1 bg-slate-400"></div>
+                
+                <!-- 更多刻度 - 简化版本 -->
+                <div class="absolute top-1/4 right-1/4 transform -translate-x-1/2 -translate-y-1/2 w-1 h-2 bg-slate-400 rotate-45"></div>
+                <div class="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-1 h-2 bg-slate-400 -rotate-45"></div>
+                <div class="absolute bottom-1/4 right-1/4 transform -translate-x-1/2 -translate-y-1/2 w-1 h-2 bg-slate-400 -rotate-45"></div>
+                <div class="absolute bottom-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-1 h-2 bg-slate-400 rotate-45"></div>
+            </div>
+            
+            <!-- 时针 -->
+            <div id="hour-hand" class="absolute w-1/2 h-1/2 flex items-start justify-center">
+                <div class="w-1.5 h-1/4 bg-blue-400 rounded-t-lg transform translate-y-1/2"></div>
+            </div>
+            
+            <!-- 分针 -->
+            <div id="minute-hand" class="absolute w-1/2 h-1/2 flex items-start justify-center">
+                <div class="w-1 h-1/3 bg-blue-300 rounded-t-lg transform translate-y-1/2"></div>
+            </div>
+            
+            <!-- 秒针 -->
+            <div id="second-hand" class="absolute w-1/2 h-1/2 flex items-start justify-center">
+                <div class="w-0.5 h-1/2 bg-red-500 rounded-t-lg transform translate-y-1/2"></div>
+            </div>
+            
+            <!-- 中心点 -->
+            <div class="absolute w-4 h-4 bg-gradient-to-br from-primary to-accent rounded-full z-10"></div>
+        </div>
+        
+        <!-- 数字时钟和日期 -->
+        <div class="w-full max-w-3xl bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl">
+            <!-- 数字时钟 -->
+            <div id="digital-clock" class="text-[clamp(2.5rem,8vw,5rem)] font-bold text-center mb-4 tracking-tighter">
+                00:00:00
+            </div>
+            
+            <!-- 日期显示 -->
+            <div id="date-display" class="text-center text-slate-300 text-xl md:text-2xl">
+                星期一, 2023年1月1日
+            </div>
+            
+            <!-- 时区显示 -->
+            <div class="text-center text-slate-400 text-lg mt-2">
+                <i class="fa fa-globe mr-2"></i><span id="timezone">中国标准时间 (CST)</span>
+            </div>
+        </div>
+        
+        <!-- 额外信息卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl">
+            <!-- 星期卡片 -->
+            <div class="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 shadow-lg text-center transform transition-all hover:scale-105 hover:shadow-xl">
+                <div class="text-slate-400 mb-1">星期</div>
+                <div id="day-of-week" class="text-2xl font-semibold">星期一</div>
+            </div>
+            
+            <!-- 月份卡片 -->
+            <div class="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 shadow-lg text-center transform transition-all hover:scale-105 hover:shadow-xl">
+                <div class="text-slate-400 mb-1">月份</div>
+                <div id="month" class="text-2xl font-semibold">一月</div>
+            </div>
+            
+            <!-- 年份卡片 -->
+            <div class="bg-slate-800/80 backdrop-blur-sm rounded-xl p-4 shadow-lg text-center transform transition-all hover:scale-105 hover:shadow-xl">
+                <div class="text-slate-400 mb-1">年份</div>
+                <div id="year" class="text-2xl font-semibold">2023</div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="mt-12 text-center text-slate-500 text-sm">
+        <p>实时时钟 © 2023 | 精确到毫秒的系统时间显示</p>
+        <div class="mt-2">
+            <i class="fa fa-refresh mr-1"></i> 时间每秒自动更新
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // 获取DOM元素
+        const hourHand = document.getElementById('hour-hand');
+        const minuteHand = document.getElementById('minute-hand');
+        const secondHand = document.getElementById('second-hand');
+        const digitalClock = document.getElementById('digital-clock');
+        const dateDisplay = document.getElementById('date-display');
+        const dayOfWeekElement = document.getElementById('day-of-week');
+        const monthElement = document.getElementById('month');
+        const yearElement = document.getElementById('year');
+        const timezoneElement = document.getElementById('timezone');
+        
+        // 星期和月份名称
+        const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        const months = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+        
+        // 更新时钟函数
+        function updateClock() {
+            const now = new Date();
+            
+            // 获取时分秒
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            // 计算指针角度
+            const hourAngle = ((hours % 12) / 12) * 360 + (minutes / 60) * 30;
+            const minuteAngle = (minutes / 60) * 360 + (seconds / 60) * 6;
+            const secondAngle = (seconds / 60) * 360;
+            
+            // 设置指针旋转
+            hourHand.style.transform = `rotate(${hourAngle}deg)`;
+            minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
+            secondHand.style.transform = `rotate(${secondAngle}deg)`;
+            
+            // 更新数字时钟
+            const hoursDisplay = hours.toString().padStart(2, '0');
+            const minutesDisplay = minutes.toString().padStart(2, '0');
+            const secondsDisplay = seconds.toString().padStart(2, '0');
+            digitalClock.textContent = `${hoursDisplay}:${minutesDisplay}:${secondsDisplay}`;
+            
+            // 更新日期显示
+            const dayOfWeek = weekdays[now.getDay()];
+            const month = months[now.getMonth()];
+            const day = now.getDate();
+            const year = now.getFullYear();
+            
+            dateDisplay.textContent = `${dayOfWeek}, ${year}年${month}${day}日`;
+            dayOfWeekElement.textContent = dayOfWeek;
+            monthElement.textContent = month;
+            yearElement.textContent = year;
+            
+            // 更新时区
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            timezoneElement.textContent = `${timezone} (${now.getTimezoneOffset() / -60 > 0 ? '+' : ''}${now.getTimezoneOffset() / -60})`;
+        }
+        
+        // 初始更新时钟
+        updateClock();
+        
+        // 每秒更新时钟
+        setInterval(updateClock, 1000);
+        
+        // 添加秒针平滑动画效果
+        secondHand.classList.add('hand-transition');
+    </script>
+</body>
+</html>
